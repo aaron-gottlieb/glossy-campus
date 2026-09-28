@@ -3,48 +3,53 @@ import type { Brand } from '@/types'
 interface LogoGridProps {
   brands: Brand[]
   title?: string
-  subtitle?: string
 }
 
-export default function LogoGrid({ brands, title, subtitle }: LogoGridProps) {
+export default function LogoGrid({ brands, title }: LogoGridProps) {
+  // Duplicate for seamless loop
+  const ticker = [...brands, ...brands, ...brands, ...brands]
+
   return (
-    <section className="bg-[#efebe9] py-12 sm:py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {(title || subtitle) && (
-          <div className="text-center mb-10">
-            {title && (
-              <h2
-                className="text-2xl sm:text-3xl text-black mb-2"
-                style={{ fontFamily: 'var(--font-playfair)' }}
-              >
-                {title}
-              </h2>
-            )}
-            {subtitle && (
-              <p className="text-[#161616]/60" style={{ fontFamily: 'var(--font-heebo)' }}>{subtitle}</p>
-            )}
-          </div>
+    <section className="bg-[#efebe9] py-12 sm:py-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
+        {title && (
+          <p
+            className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337]"
+            style={{ fontFamily: 'var(--font-poppins)' }}
+          >
+            {title}
+          </p>
         )}
-        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
-          {brands.map((brand) => (
-            <div
-              key={brand.slug}
-              className="flex items-center justify-center"
+      </div>
+
+      {/* Marquee row 1 — left */}
+      <div className="flex overflow-hidden mb-4">
+        <div className="flex animate-marquee whitespace-nowrap gap-0 shrink-0">
+          {ticker.map((brand, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-4 px-8 text-[#161616]/50 text-2xl font-black uppercase tracking-tight shrink-0"
+              style={{ fontFamily: 'var(--font-poppins)' }}
             >
-              {brand.logo ? (
-                /* When actual logo files are available, replace with <Image> */
-                <div className="h-10 w-32 bg-gray-300 rounded flex items-center justify-center">
-                  <span className="text-xs text-gray-600 font-medium">{brand.name}</span>
-                </div>
-              ) : (
-                <span
-                  className="text-base font-black text-[#161616] tracking-tight"
-                  style={{ fontFamily: 'var(--font-poppins)' }}
-                >
-                  {brand.name}
-                </span>
-              )}
-            </div>
+              {brand.name}
+              <span className="text-[#FC4337] text-lg">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Marquee row 2 — right */}
+      <div className="flex overflow-hidden">
+        <div className="flex animate-marquee-reverse whitespace-nowrap gap-0 shrink-0">
+          {[...ticker].reverse().map((brand, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-4 px-8 text-[#161616]/30 text-xl font-black uppercase tracking-tight shrink-0"
+              style={{ fontFamily: 'var(--font-poppins)' }}
+            >
+              <span className="text-[#FC4337] text-sm">✦</span>
+              {brand.name}
+            </span>
           ))}
         </div>
       </div>

@@ -44,54 +44,63 @@ export default async function HomePage() {
       {/* Stats */}
       <StatGrid stats={stats} />
 
-      {/* Brand partners */}
-      <LogoGrid
-        brands={brands}
-        title="Brand Partners"
-        subtitle="Leading beauty and wellness brands trust Glossy Campus to reach the next generation."
-      />
+      {/* Brand partners — marquee */}
+      <LogoGrid brands={brands} title="Brand Partners" />
 
-      {/* How it works */}
+      {/* How it works — Later-style editorial numbered rows */}
       <section className="bg-[#FDF9F5] py-14 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
+            <div>
+              <p
+                className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
+                style={{ fontFamily: 'var(--font-poppins)' }}
+              >
+                {content.howItWorks.eyebrow}
+              </p>
+              <h2
+                className="text-3xl sm:text-5xl text-black leading-tight"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                {content.howItWorks.title}
+              </h2>
+            </div>
             <p
-              className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
-              style={{ fontFamily: 'var(--font-poppins)' }}
-            >
-              {content.howItWorks.eyebrow}
-            </p>
-            <h2 className="text-3xl sm:text-4xl text-black" style={{ fontFamily: 'var(--font-playfair)' }}>
-              {content.howItWorks.title}
-            </h2>
-            <p
-              className="text-[#161616]/60 mt-4 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed"
+              className="text-base text-[#161616]/50 max-w-sm leading-relaxed sm:text-right"
               style={{ fontFamily: 'var(--font-heebo)' }}
             >
               {content.howItWorks.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {content.howItWorks.steps.map((item) => (
-              <div key={item.step} className="bg-[#efebe9] rounded-2xl p-8">
+
+          <div className="border-t border-black/10">
+            {content.howItWorks.steps.map((item, i) => (
+              <div
+                key={item.step}
+                className="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-12 py-10 border-b border-black/10"
+              >
+                {/* Big step number */}
                 <div
-                  className="text-4xl font-black text-[#FC4337] mb-4"
-                  style={{ fontFamily: 'var(--font-poppins)' }}
+                  className="text-[5rem] sm:text-[7rem] font-black leading-none text-[#FC4337]/15 flex-shrink-0 w-auto sm:w-36 select-none"
+                  style={{ fontFamily: 'var(--font-poppins)', fontWeight: 900 }}
                 >
-                  {item.step}
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3
-                  className="text-xl text-black mb-3"
-                  style={{ fontFamily: 'var(--font-playfair)' }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-sm text-[#161616]/60 leading-relaxed"
-                  style={{ fontFamily: 'var(--font-heebo)' }}
-                >
-                  {item.body}
-                </p>
+                {/* Content */}
+                <div className="flex-1 sm:pt-4">
+                  <h3
+                    className="text-2xl sm:text-3xl text-black mb-4 leading-tight"
+                    style={{ fontFamily: 'var(--font-playfair)' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="text-base text-[#161616]/60 leading-relaxed max-w-xl"
+                    style={{ fontFamily: 'var(--font-heebo)' }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -101,28 +110,30 @@ export default async function HomePage() {
       {/* University network preview */}
       <section className="bg-[#efebe9] py-14 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8">
-            <p
-              className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
-              style={{ fontFamily: 'var(--font-poppins)' }}
-            >
-              {content.network.eyebrow}
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl text-black mb-2"
-              style={{ fontFamily: 'var(--font-playfair)' }}
-            >
-              {content.network.title}
-            </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 gap-4">
+            <div>
+              <p
+                className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
+                style={{ fontFamily: 'var(--font-poppins)' }}
+              >
+                {content.network.eyebrow}
+              </p>
+              <h2
+                className="text-3xl sm:text-5xl text-black leading-tight"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                {content.network.title}
+              </h2>
+            </div>
             <a
               href="/network"
-              className="text-sm font-black text-[#FC4337] hover:underline"
+              className="text-sm font-black text-[#FC4337] hover:underline shrink-0"
               style={{ fontFamily: 'var(--font-poppins)' }}
             >
               View all universities →
             </a>
           </div>
-          <div className="flex flex-wrap gap-3 justify-center max-w-[820px] mx-auto">
+          <div className="flex flex-wrap gap-3 justify-start max-w-[820px]">
             {universities.map((u) => (
               <UniversityCard key={u.slug} university={u} />
             ))}
