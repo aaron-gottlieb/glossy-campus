@@ -13,10 +13,15 @@ export default function LogoGrid({ brands, title, subtitle }: LogoGridProps) {
         {(title || subtitle) && (
           <div className="text-center mb-10">
             {title && (
-              <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">{title}</h2>
+              <h2
+                className="text-2xl sm:text-3xl text-black mb-2"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                {title}
+              </h2>
             )}
             {subtitle && (
-              <p className="text-gray-600">{subtitle}</p>
+              <p className="text-[#161616]/60" style={{ fontFamily: 'var(--font-heebo)' }}>{subtitle}</p>
             )}
           </div>
         )}
@@ -32,7 +37,12 @@ export default function LogoGrid({ brands, title, subtitle }: LogoGridProps) {
                   <span className="text-xs text-gray-600 font-medium">{brand.name}</span>
                 </div>
               ) : (
-                <span className="text-base font-bold text-black tracking-tight">{brand.name}</span>
+                <span
+                  className="text-base font-black text-[#161616] tracking-tight"
+                  style={{ fontFamily: 'var(--font-poppins)' }}
+                >
+                  {brand.name}
+                </span>
               )}
             </div>
           ))}

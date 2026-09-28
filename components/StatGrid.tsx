@@ -21,17 +21,21 @@ export default function StatGrid({ stats, variant = 'light' }: StatGridProps) {
   const isDark = variant === 'dark'
 
   return (
-    <section className={`py-12 sm:py-16 ${isDark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <section className={`py-12 sm:py-16 ${isDark ? 'bg-black text-white' : 'bg-[#FDF9F5] text-black'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {items.map((item) => (
             <div key={item.label} className="text-center">
               <div
-                className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-[#ef3325]' : 'text-[#ef3325]'}`}
+                className="text-6xl sm:text-7xl font-black text-black mb-2 leading-none"
+                style={{ fontFamily: 'var(--font-poppins)', fontWeight: 800 }}
               >
                 {item.value}
               </div>
-              <div className={`text-xs sm:text-sm font-medium uppercase tracking-widest ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <div
+                className="text-xs font-semibold uppercase tracking-[0.15em] text-[#161616]/50"
+                style={{ fontFamily: 'var(--font-poppins)' }}
+              >
                 {item.label}
               </div>
             </div>

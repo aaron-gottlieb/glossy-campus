@@ -9,27 +9,21 @@ export default function UniversityCard({ university }: UniversityCardProps) {
   return (
     <Link
       href={`/network/${university.slug}`}
-      className="group block bg-white border border-black/10 rounded-lg p-6 hover:border-[#ef3325] hover:shadow-md transition-all"
+      className="group inline-flex flex-col items-center justify-center bg-[#efebe9] hover:bg-[#FC4337] hover:text-white transition-colors text-center px-5 py-3 rounded-[20px]"
+      style={{ minWidth: 180, maxWidth: 250, minHeight: 54 }}
     >
-      <div className="flex items-start justify-between mb-3">
-        <div>
-          <h3 className="font-bold text-black text-base group-hover:text-[#ef3325] transition-colors">
-            {university.name}
-          </h3>
-          <p className="text-sm text-gray-500 mt-0.5">
-            {university.city}, {university.state}
-          </p>
-        </div>
-        {university.creatorCount && (
-          <span className="text-xs font-semibold bg-[#efebe9] text-black px-2 py-1 rounded shrink-0 ml-2">
-            {university.creatorCount} creators
-          </span>
-        )}
-      </div>
-      <p className="text-sm text-gray-600 leading-relaxed">{university.description}</p>
-      {university.socialReach && (
-        <p className="text-xs text-gray-400 mt-3 font-medium">{university.socialReach} reach</p>
-      )}
+      <span
+        className="text-[13px] font-black text-black group-hover:text-white leading-tight transition-colors"
+        style={{ fontFamily: 'var(--font-poppins)' }}
+      >
+        {university.name}
+      </span>
+      <span
+        className="text-[10px] font-semibold text-[#161616]/50 group-hover:text-white/80 transition-colors mt-0.5"
+        style={{ fontFamily: 'var(--font-poppins)' }}
+      >
+        {university.city}, {university.state}
+      </span>
     </Link>
   )
 }

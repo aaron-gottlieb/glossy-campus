@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
-/* Glossy Campus — Global styles */
-/* Primary red: #ef3325 | Cream bg: #efebe9 | Black: #000 */
-
 :root {
-  --color-red: #ef3325;
-  --color-cream: #efebe9;
+  --color-red: #FC4337;
+  --color-red-hover: #e03a2f;
+  --color-cream: #FDF9F5;
+  --color-cream-dark: #efebe9;
+  --color-black: #161616;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-heebo: 'Heebo', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 html {
@@ -13,17 +16,14 @@ html {
 }
 
 body {
-  font-family:
-    'Inter',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
+  font-family: var(--font-heebo), sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--color-cream);
+  color: var(--color-black);
 }
 
-h1, h2, h3 {
-  letter-spacing: -0.02em;
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), serif;
 }
 
 [id] {

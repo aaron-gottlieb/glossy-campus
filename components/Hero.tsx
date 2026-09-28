@@ -22,54 +22,43 @@ export default function Hero({
   imageAlt,
   variant = 'default',
 }: HeroProps) {
-  if (variant === 'centered') {
-    return (
-      <section className="bg-[#efebe9] border-t-[6px] border-[#ef3325]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
-          {eyebrow && (
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ef3325] mb-4">{eyebrow}</p>
-          )}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-[1.05] mb-6">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="text-xl sm:text-2xl font-light text-gray-700 mb-4">{subtitle}</p>
-          )}
-          {body && <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">{body}</p>}
-          {ctas.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-3">
-              {ctas.map((cta) => (
-                <CTAButton key={cta.href} cta={cta} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-    )
-  }
-
   if (variant === 'split' && image) {
     return (
-      <section className="bg-[#efebe9] border-t-[6px] border-[#ef3325]">
+      <section className="bg-[#FDF9F5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             {eyebrow && (
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ef3325] mb-4">{eyebrow}</p>
+              <p
+                className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-4"
+                style={{ fontFamily: 'var(--font-poppins)' }}
+              >
+                {eyebrow}
+              </p>
             )}
-            <h1 className="text-4xl sm:text-5xl font-bold text-black leading-[1.05] mb-6">{title}</h1>
-            {subtitle && <p className="text-xl font-light text-gray-700 mb-4">{subtitle}</p>}
-            {body && <p className="text-base text-gray-600 leading-relaxed mb-8">{body}</p>}
+            <h1
+              className="text-4xl sm:text-5xl text-black leading-tight mb-6"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+            >
+              {title}
+            </h1>
+            {subtitle && (
+              <p className="text-xl text-[#161616]/70 mb-4" style={{ fontFamily: 'var(--font-heebo)' }}>
+                {subtitle}
+              </p>
+            )}
+            {body && (
+              <p className="text-lg text-[#161616]/70 leading-relaxed mb-8" style={{ fontFamily: 'var(--font-heebo)' }}>
+                {body}
+              </p>
+            )}
             {ctas.length > 0 && (
               <div className="flex flex-wrap gap-3">
-                {ctas.map((cta) => (
-                  <CTAButton key={cta.href} cta={cta} />
-                ))}
+                {ctas.map((cta) => <CTAButton key={cta.href} cta={cta} />)}
               </div>
             )}
           </div>
-          <div className="relative aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
-            {/* Image placeholder — replace src with actual asset */}
-            <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
+          <div className="relative aspect-[4/3] bg-[#efebe9] rounded-lg overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center text-[#161616]/40 text-sm">
               {imageAlt ?? 'Hero image'}
             </div>
           </div>
@@ -78,27 +67,43 @@ export default function Hero({
     )
   }
 
-  // Default
+  // Default / centered — matches existing Campus hero: centered, large Playfair headline
   return (
-    <section className="bg-[#efebe9] border-t-[6px] border-[#ef3325]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+    <section className="bg-[#FDF9F5] py-16 sm:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         {eyebrow && (
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ef3325] mb-4">{eyebrow}</p>
+          <p
+            className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-5"
+            style={{ fontFamily: 'var(--font-poppins)' }}
+          >
+            {eyebrow}
+          </p>
         )}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-[1.05] mb-6 max-w-3xl">
+        <h1
+          className="text-4xl sm:text-5xl lg:text-6xl text-black leading-tight mb-6"
+          style={{ fontFamily: 'var(--font-playfair)' }}
+        >
           {title}
         </h1>
         {subtitle && (
-          <p className="text-xl sm:text-2xl font-light text-gray-700 mb-4 max-w-2xl">{subtitle}</p>
+          <p
+            className="text-xl sm:text-2xl text-[#161616]/70 mb-4"
+            style={{ fontFamily: 'var(--font-heebo)' }}
+          >
+            {subtitle}
+          </p>
         )}
         {body && (
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl">{body}</p>
+          <p
+            className="text-lg sm:text-xl text-[#161616]/70 leading-relaxed mb-10 max-w-2xl mx-auto"
+            style={{ fontFamily: 'var(--font-heebo)', lineHeight: 1.5 }}
+          >
+            {body}
+          </p>
         )}
         {ctas.length > 0 && (
-          <div className="flex flex-wrap gap-3">
-            {ctas.map((cta) => (
-              <CTAButton key={cta.href} cta={cta} />
-            ))}
+          <div className="flex flex-wrap justify-center gap-4">
+            {ctas.map((cta) => <CTAButton key={cta.href} cta={cta} />)}
           </div>
         )}
       </div>
@@ -106,16 +111,20 @@ export default function Hero({
   )
 }
 
-function CTAButton({ cta }: { cta: CTA }) {
-  const base = 'inline-flex items-center font-semibold text-sm px-6 py-3 rounded transition-colors'
+export function CTAButton({ cta }: { cta: CTA }) {
+  const base = 'inline-flex items-center font-black text-sm px-8 py-3 rounded-full transition-colors'
   const variants = {
-    primary: 'bg-[#ef3325] text-white hover:bg-[#d42b1e]',
-    secondary: 'bg-black text-white hover:bg-gray-800',
+    primary: 'bg-[#FC4337] text-white hover:bg-[#e03a2f]',
+    secondary: 'bg-black text-white hover:bg-[#161616]/80',
     outline: 'border-2 border-black text-black hover:bg-black hover:text-white',
   }
 
   return (
-    <Link href={cta.href} className={`${base} ${variants[cta.variant]}`}>
+    <Link
+      href={cta.href}
+      className={`${base} ${variants[cta.variant]}`}
+      style={{ fontFamily: 'var(--font-poppins)', fontSize: '13px', letterSpacing: '0.02em' }}
+    >
       {cta.label}
     </Link>
   )
