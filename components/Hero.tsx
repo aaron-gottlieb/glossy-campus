@@ -11,7 +11,7 @@ interface HeroProps {
 
 export default function Hero({ eyebrow, title, body, ctas = [] }: HeroProps) {
   return (
-    <section className="bg-[#FDF9F5] min-h-[90vh] flex flex-col justify-center pt-4 pb-20 sm:pb-28 overflow-hidden">
+    <section className="bg-[#FDF9F5] flex flex-col justify-center pt-16 pb-16 sm:pb-20 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
 
         {/* Eyebrow */}
@@ -26,7 +26,7 @@ export default function Hero({ eyebrow, title, body, ctas = [] }: HeroProps) {
 
         {/* Headline — Later-style: huge, tight leading */}
         <h1
-          className="text-[clamp(3.2rem,8.5vw,7.5rem)] text-black leading-[0.93] tracking-tight mb-10 max-w-5xl"
+          className="text-[clamp(2.8rem,6.5vw,5.5rem)] text-black leading-[0.95] tracking-tight mb-10 max-w-4xl"
           style={{ fontFamily: 'var(--font-playfair)', fontWeight: 400 }}
         >
           {title}
