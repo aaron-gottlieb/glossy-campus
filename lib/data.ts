@@ -8,7 +8,7 @@
  * The component interface stays identical.
  */
 
-import type { University, Brand, Campaign, CaseStudy, CampusStats, FAQ, Event, Creator, HomepageContent } from '@/types'
+import type { University, Brand, Campaign, CaseStudy, CampusStats, FAQ, Event, Creator, HomepageContent, SocialPost } from '@/types'
 import { universities } from '@/data/universities'
 import { brands } from '@/data/brands'
 import { campaigns } from '@/data/campaigns'
@@ -18,6 +18,7 @@ import { faqs } from '@/content/faqs'
 import { events } from '@/data/events'
 import { creators } from '@/data/creators'
 import { homepageContent } from '@/data/homepage'
+import { socialPosts } from '@/data/social-posts'
 
 // ─── Universities ────────────────────────────────────────────────────────────
 
@@ -131,4 +132,10 @@ export async function getCreator(slug: string): Promise<Creator | undefined> {
 
 export async function getHomepageContent(): Promise<HomepageContent> {
   return homepageContent
+}
+
+// ─── Social Posts ─────────────────────────────────────────────────────────────
+
+export async function getSocialPosts(): Promise<SocialPost[]> {
+  return socialPosts.filter((p) => p.featured)
 }

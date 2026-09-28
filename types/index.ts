@@ -80,6 +80,19 @@ export interface FAQ {
   order: number
 }
 
+export interface SocialPost {
+  id: string
+  platform: 'instagram' | 'tiktok'
+  handle: string       // @username
+  caption: string      // excerpt shown in card
+  imageUrl?: string    // real image when available; omit for placeholder
+  likes?: number
+  comments?: number
+  postUrl?: string     // link to actual post
+  university?: string  // university slug
+  featured: boolean
+}
+
 export interface Event {
   slug: string
   title: string

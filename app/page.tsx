@@ -2,6 +2,7 @@ import Hero from '@/components/Hero'
 import StatGrid from '@/components/StatGrid'
 import LogoGrid from '@/components/LogoGrid'
 import UniversityCard from '@/components/UniversityCard'
+import SocialFeed from '@/components/SocialFeed'
 import CTASection from '@/components/CTASection'
 import FAQSection from '@/components/FAQSection'
 import {
@@ -10,16 +11,18 @@ import {
   getFeaturedUniversities,
   getFAQs,
   getHomepageContent,
+  getSocialPosts,
 } from '@/lib/data'
 import { organizationSchema } from '@/lib/metadata'
 
 export default async function HomePage() {
-  const [stats, brands, universities, faqs, content] = await Promise.all([
+  const [stats, brands, universities, faqs, content, socialPosts] = await Promise.all([
     getCampusStats(),
     getFeaturedBrands(),
     getFeaturedUniversities(),
     getFAQs(),
     getHomepageContent(),
+    getSocialPosts(),
   ])
 
   return (
@@ -140,6 +143,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Social feed */}
+      <SocialFeed posts={socialPosts} />
 
       {/* Brand CTA + inquiry form */}
       <section id="brand-inquiry" className="bg-[#161616] text-white py-14 sm:py-20">
