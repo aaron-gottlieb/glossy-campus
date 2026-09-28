@@ -80,6 +80,51 @@ export interface FAQ {
   order: number
 }
 
+export interface Event {
+  slug: string
+  title: string
+  type: 'activation' | 'popup' | 'panel' | 'networking' | 'workshop' | 'other'
+  brand?: string
+  university?: string
+  city: string
+  state: string
+  date: string          // ISO: '2025-04-12'
+  endDate?: string      // for multi-day events
+  description: string
+  rsvpUrl?: string
+  capacity?: number
+  status: 'upcoming' | 'past' | 'cancelled'
+  featured: boolean
+}
+
+export interface HomepageContent {
+  hero: {
+    eyebrow: string
+    title: string
+    body: string
+  }
+  howItWorks: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    steps: { step: string; title: string; body: string }[]
+  }
+  network: {
+    eyebrow: string
+    title: string
+  }
+  brandInquiry: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    bullets: string[]
+  }
+  creatorCTA: {
+    title: string
+    body: string
+  }
+}
+
 export interface CTA {
   label: string
   href: string

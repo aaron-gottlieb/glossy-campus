@@ -9,15 +9,17 @@ import {
   getFeaturedBrands,
   getFeaturedUniversities,
   getFAQs,
+  getHomepageContent,
 } from '@/lib/data'
 import { organizationSchema } from '@/lib/metadata'
 
 export default async function HomePage() {
-  const [stats, brands, universities, faqs] = await Promise.all([
+  const [stats, brands, universities, faqs, content] = await Promise.all([
     getCampusStats(),
     getFeaturedBrands(),
     getFeaturedUniversities(),
     getFAQs(),
+    getHomepageContent(),
   ])
 
   return (
@@ -30,9 +32,9 @@ export default async function HomePage() {
 
       {/* Hero */}
       <Hero
-        eyebrow="Glossy Campus"
-        title="Where beauty and wellness brands meet the next generation"
-        body="Connect with a vetted community of college creators ready to produce authentic content, drive product awareness, and share the brands they love — across 70+ universities nationwide."
+        eyebrow={content.hero.eyebrow}
+        title={content.hero.title}
+        body={content.hero.body}
         ctas={[
           { label: 'Partner With Us', href: '/#brand-inquiry', variant: 'primary' },
           { label: 'Apply to Join', href: '/creators/apply', variant: 'secondary' },
@@ -57,37 +59,20 @@ export default async function HomePage() {
               className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
               style={{ fontFamily: 'var(--font-poppins)' }}
             >
-              How It Works
+              {content.howItWorks.eyebrow}
             </p>
             <h2 className="text-3xl sm:text-4xl text-black" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Authentic reach. Managed by Glossy.
+              {content.howItWorks.title}
             </h2>
             <p
               className="text-[#161616]/60 mt-4 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed"
               style={{ fontFamily: 'var(--font-heebo)' }}
             >
-              Glossy handles creator matching, briefing, product shipping, and content delivery. Brands get
-              genuine student voices. Creators get paid opportunities, free products, and career launchpad access.
+              {content.howItWorks.subtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                step: '01',
-                title: 'Brand Campaigns',
-                body: 'Brands brief Glossy on their goals. We match them with the right creators across our vetted network of 250+ college students.',
-              },
-              {
-                step: '02',
-                title: 'Creator Content',
-                body: 'Creators receive products, produce authentic reviews, tutorials, and social content — on their platforms, in their voice.',
-              },
-              {
-                step: '03',
-                title: 'Campus Activations',
-                body: 'Beyond social, Campus creators can host on-campus events, pop-ups, and activations that drive real-world brand presence.',
-              },
-            ].map((item) => (
+            {content.howItWorks.steps.map((item) => (
               <div key={item.step} className="bg-[#efebe9] rounded-2xl p-8">
                 <div
                   className="text-4xl font-black text-[#FC4337] mb-4"
@@ -121,13 +106,13 @@ export default async function HomePage() {
               className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-3"
               style={{ fontFamily: 'var(--font-poppins)' }}
             >
-              The Network
+              {content.network.eyebrow}
             </p>
             <h2
               className="text-3xl sm:text-4xl text-black mb-2"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              70+ Universities Nationwide
+              {content.network.title}
             </h2>
             <a
               href="/network"
@@ -154,26 +139,19 @@ export default async function HomePage() {
                 className="text-xs font-semibold italic uppercase tracking-[0.2em] text-[#FC4337] mb-4"
                 style={{ fontFamily: 'var(--font-poppins)' }}
               >
-                For Brands
+                {content.brandInquiry.eyebrow}
               </p>
               <h2
                 className="text-3xl sm:text-4xl text-white mb-4 leading-tight"
                 style={{ fontFamily: 'var(--font-playfair)' }}
               >
-                Ready to reach Gen Z on campus?
+                {content.brandInquiry.title}
               </h2>
               <p className="text-white/60 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-heebo)' }}>
-                Tell us about your brand and campaign goals. Our team will match you with the right creators
-                and build a custom program.
+                {content.brandInquiry.subtitle}
               </p>
               <ul className="flex flex-col gap-3">
-                {[
-                  'Access to 250+ vetted college creators',
-                  '70+ universities nationwide',
-                  '7.9% average engagement rate',
-                  'Full campaign management by Glossy',
-                  'Authentic paid social, product reviews, and activations',
-                ].map((item) => (
+                {content.brandInquiry.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-white/70" style={{ fontFamily: 'var(--font-heebo)' }}>
                     <span className="text-[#FC4337] mt-0.5 shrink-0 font-black">✓</span>
                     {item}
@@ -278,8 +256,8 @@ export default async function HomePage() {
 
       {/* Creator CTA */}
       <CTASection
-        title="Are you a college creator?"
-        body="Join 250+ vetted creators across 70+ universities. Get paid opportunities, free products, Glossy+ membership, and a direct line to the beauty and fashion industry."
+        title={content.creatorCTA.title}
+        body={content.creatorCTA.body}
         ctas={[
           { label: 'Apply to Join', href: '/creators/apply', variant: 'primary' },
           { label: 'Learn More', href: '/creators', variant: 'secondary' },

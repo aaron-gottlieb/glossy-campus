@@ -8,13 +8,16 @@
  * The component interface stays identical.
  */
 
-import type { University, Brand, Campaign, CaseStudy, CampusStats, FAQ } from '@/types'
+import type { University, Brand, Campaign, CaseStudy, CampusStats, FAQ, Event, Creator, HomepageContent } from '@/types'
 import { universities } from '@/data/universities'
 import { brands } from '@/data/brands'
 import { campaigns } from '@/data/campaigns'
 import { caseStudies } from '@/data/case-studies'
 import { campusStats } from '@/data/stats'
 import { faqs } from '@/content/faqs'
+import { events } from '@/data/events'
+import { creators } from '@/data/creators'
+import { homepageContent } from '@/data/homepage'
 
 // ─── Universities ────────────────────────────────────────────────────────────
 
@@ -88,4 +91,44 @@ export async function getFAQs(audience?: string): Promise<FAQ[]> {
   const sorted = [...faqs].sort((a, b) => a.order - b.order)
   if (!audience) return sorted
   return sorted.filter((f) => f.audience === audience || f.audience === 'all')
+}
+
+// ─── Events ───────────────────────────────────────────────────────────────────
+
+export async function getEvents(): Promise<Event[]> {
+  return events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+export async function getUpcomingEvents(): Promise<Event[]> {
+  return events
+    .filter((e) => e.status === 'upcoming')
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+}
+
+export async function getFeaturedEvents(): Promise<Event[]> {
+  return events.filter((e) => e.featured)
+}
+
+export async function getEvent(slug: string): Promise<Event | undefined> {
+  return events.find((e) => e.slug === slug)
+}
+
+// ─── Creators ─────────────────────────────────────────────────────────────────
+
+export async function getCreators(): Promise<Creator[]> {
+  return creators
+}
+
+export async function getFeaturedCreators(): Promise<Creator[]> {
+  return creators.filter((c) => c.featured)
+}
+
+export async function getCreator(slug: string): Promise<Creator | undefined> {
+  return creators.find((c) => c.slug === slug)
+}
+
+// ─── Homepage Content ─────────────────────────────────────────────────────────
+
+export async function getHomepageContent(): Promise<HomepageContent> {
+  return homepageContent
 }
