@@ -21,7 +21,7 @@ export default async function CaseStudiesPage() {
         eyebrow="Case Studies"
         title="Real campaigns. Real results."
         body="See how leading beauty and wellness brands used Glossy Campus to reach Gen Z authentically."
-        variant="centered"
+
       />
 
       <section className="bg-white py-14 sm:py-20">

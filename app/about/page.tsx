@@ -20,7 +20,7 @@ export default async function AboutPage() {
         eyebrow="About Glossy Campus"
         title="The next generation of fashion and beauty — on campus"
         body="Glossy Campus is the creator network built for the industry that shapes culture. Powered by Glossy, backed by Digiday Media."
-        variant="centered"
+
       />
 
       <section className="bg-white py-14 sm:py-20">

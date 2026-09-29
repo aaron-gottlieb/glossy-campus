@@ -24,7 +24,7 @@ export default async function NetworkPage() {
         eyebrow="The Network"
         title={`${stats.universities}+ universities. One community.`}
         body="From Alabama to USC, Glossy Campus creators are embedded in campus culture coast to coast. Each creator is vetted for content quality, engagement authenticity, and brand alignment."
-        variant="centered"
+
         ctas={[
           { label: 'Apply to Join', href: '/creators/apply', variant: 'primary' },
           { label: 'Partner With Us', href: '/#brand-inquiry', variant: 'outline' },

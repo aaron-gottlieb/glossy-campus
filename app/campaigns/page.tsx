@@ -25,7 +25,7 @@ export default async function CampaignsPage() {
         eyebrow="Campaigns"
         title="Creator campaigns in action"
         body="From product launches to campus activations, see how brands and creators work together on Glossy Campus."
-        variant="centered"
+
         ctas={[
           { label: 'Partner With Us', href: '/#brand-inquiry', variant: 'primary' },
           { label: 'See Case Studies', href: '/brands/case-studies', variant: 'outline' },
